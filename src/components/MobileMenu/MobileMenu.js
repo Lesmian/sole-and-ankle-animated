@@ -19,12 +19,24 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
         </CloseButton>
         <Filler />
         <Nav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale" delay={0.2}>
+            Sale
+          </NavLink>
+          <NavLink href="/new" delay={0.4}>
+            New&nbsp;Releases
+          </NavLink>
+          <NavLink href="/men" delay={0.6}>
+            Men
+          </NavLink>
+          <NavLink href="/women" delay={0.8}>
+            Women
+          </NavLink>
+          <NavLink href="/kids" delay={1}>
+            Kids
+          </NavLink>
+          <NavLink href="/collections" delay={1.2}>
+            Collections
+          </NavLink>
         </Nav>
         <Footer>
           <SubLink href="/terms">Terms and Conditions</SubLink>
@@ -78,7 +90,7 @@ const Content = styled(DialogContent)`
   @media (prefers-reduced-motion: no-preference) {
     animation: ${slidein} 0.5s cubic-bezier(0.67, 0.21, 0.82, 0.85);
 
-    & > * {
+    & > *:not {
       animation: ${fadein} 0.3s 0.3s backwards ease-in;
     }
   }
@@ -103,6 +115,11 @@ const NavLink = styled.a`
   text-decoration: none;
   font-size: 1.125rem;
   text-transform: uppercase;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${fadein} 0.5s ${(props) => props.delay}s backwards
+      cubic-bezier(0.67, 0.21, 0.82, 0.85);
+  }
 
   &:first-of-type {
     color: var(--color-secondary);
